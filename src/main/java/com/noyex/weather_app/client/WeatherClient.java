@@ -1,7 +1,9 @@
 package com.noyex.weather_app.client;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+@Component
 public class WeatherClient implements IWeatherClient {
 
     RestTemplate restTemplate;
@@ -13,14 +15,13 @@ public class WeatherClient implements IWeatherClient {
     }
 
     @Override
-    public String getWeatherForCity(String city) {
+    public String fetchWeatherForCity(String city) {
         String url = uriBuilderProvider.builder()
                 .pathSegment("weather")
                 .queryParam("units", "metric")
                 .queryParam("q", city)
                 .build()
                 .toUriString();
-        System.out.println(url);
         return restTemplate.getForObject(url, String.class);
     }
 }
