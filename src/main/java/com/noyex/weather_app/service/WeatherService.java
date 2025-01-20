@@ -25,7 +25,7 @@ public class WeatherService implements IWeatherService {
             return objectMapper.readValue(jsonWeather, WeatherDto.class);
         }
         catch (JsonProcessingException e){
-            throw new RuntimeException("Error parsing weather data", e);
+            throw new RuntimeException("Error parsing weather data ", e);
         }
     }
 }
