@@ -80,11 +80,4 @@
 		</plugins>
 	</build>
 
-	<modules>
-		<module>weather-api</module>
-		<module>weather-data</module>
-		<module>weather-service</module>
-		<module>weather-client</module>
-	</modules>
-
 </project>
