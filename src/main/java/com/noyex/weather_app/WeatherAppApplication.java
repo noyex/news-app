@@ -1,8 +1,8 @@
 package com.noyex.weather_app;
 
-import com.noyex.weather_app.client.IWeatherClient;
-import com.noyex.weather_app.service.IWeatherService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.noyex.weather_app.client.city_client.ICityClient;
+import com.noyex.weather_app.client.weather_client.IWeatherClient;
+import com.noyex.weather_app.service.city_service.ICityService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,12 +10,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class WeatherAppApplication implements CommandLineRunner {
 
+	private final ICityClient cityClient;
+	private final ICityService cityService;
 	private final IWeatherClient weatherClient;
-	private final IWeatherService service;
 
-    public WeatherAppApplication(IWeatherClient weatherClient, IWeatherService service) {
-        this.weatherClient = weatherClient;
-        this.service = service;
+    public WeatherAppApplication(ICityClient cityClient, ICityService cityService,IWeatherClient weatherClient) {
+        this.cityClient = cityClient;
+        this.cityService = cityService;
+		this.weatherClient = weatherClient;
     }
 
 
@@ -25,6 +27,9 @@ public class WeatherAppApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		double lat = cityService.getCityLat(cityService.getCity("gdynia"));
+		double lon = cityService.getCityLon(cityService.getCity("gdynia"));
+		System.out.println(weatherClient.fetchWeather(lat, lon));
 	}
 
 }

@@ -1,7 +1,7 @@
 package com.noyex.weather_app.controller;
 
-import com.noyex.weather_app.client.contract.WeatherDto;
-import com.noyex.weather_app.service.IWeatherService;
+import com.noyex.weather_app.client.city_client.contract.WeatherDto;
+import com.noyex.weather_app.service.city_service.ICityService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api/weather")
 public class WeatherController {
 
-    private final IWeatherService weatherService;
+    private final ICityService weatherService;
 
-    public WeatherController(IWeatherService weatherService) {
+    public WeatherController(ICityService weatherService) {
         this.weatherService = weatherService;
     }
 
     @GetMapping("/{city}")
-    public ResponseEntity<WeatherDto> getWeatherForCity(@PathVariable String city){
-        return ResponseEntity.ok(weatherService.getWeatherForCity(city));
+    public ResponseEntity<WeatherDto> getWeatherForCity(@PathVariable("city") String cityName){
+        var city = weatherService.getCity(cityName);
+        if (city == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(city);
     }
-
 
 }

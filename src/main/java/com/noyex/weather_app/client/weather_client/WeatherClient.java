@@ -1,10 +1,11 @@
-package com.noyex.weather_app.client;
+package com.noyex.weather_app.client.weather_client;
 
+import com.noyex.weather_app.client.city_client.ICityClientUriBuilderProvider;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
-public class WeatherClient implements IWeatherClient {
+public class WeatherClient implements IWeatherClient{
 
     RestTemplate restTemplate;
     IWeatherClientUriBuilderProvider uriBuilderProvider;
@@ -15,13 +16,15 @@ public class WeatherClient implements IWeatherClient {
     }
 
     @Override
-    public String fetchWeatherForCity(String city) {
+    public String fetchWeather(double lat, double lon) {
         String url = uriBuilderProvider.builder()
                 .pathSegment("weather")
                 .queryParam("units", "metric")
-                .queryParam("q", city)
+                .queryParam("lat", lat)
+                .queryParam("lon", lon)
                 .build()
                 .toUriString();
+        System.out.println(url);
         return restTemplate.getForObject(url, String.class);
     }
 }
