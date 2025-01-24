@@ -29,7 +29,7 @@ public class WeatherAppApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		double lat = cityService.getCityLat(cityService.getCity("gdynia"));
 		double lon = cityService.getCityLon(cityService.getCity("gdynia"));
-		System.out.println(weatherClient.fetchWeather(lat, lon));
+		System.out.println(weatherClient.fetchCurrentWeather(lat, lon));
 	}
 
 }

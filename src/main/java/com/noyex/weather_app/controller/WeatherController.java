@@ -1,7 +1,10 @@
 package com.noyex.weather_app.controller;
 
-import com.noyex.weather_app.client.city_client.contract.WeatherDto;
+import com.noyex.weather_app.client.city_client.contract.CityDto;
+import com.noyex.weather_app.client.weather_client.IWeatherClient;
+import com.noyex.weather_app.client.weather_client.contract.WeatherDto;
 import com.noyex.weather_app.service.city_service.ICityService;
+import com.noyex.weather_app.service.weather_service.IWeatherService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,19 +15,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api/weather")
 public class WeatherController {
 
-    private final ICityService weatherService;
+    private final ICityService cityService;
+    private final IWeatherService weatherService;
 
-    public WeatherController(ICityService weatherService) {
+    public WeatherController(ICityService cityService, IWeatherService weatherService) {
+        this.cityService = cityService;
         this.weatherService = weatherService;
     }
 
+
     @GetMapping("/{city}")
-    public ResponseEntity<WeatherDto> getWeatherForCity(@PathVariable("city") String cityName){
-        var city = weatherService.getCity(cityName);
-        if (city == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(city);
+    public ResponseEntity<WeatherDto> getWeatherForCity(@PathVariable String city){
+        CityDto cityDto = cityService.getCity(city);
+        double lat = cityService.getCityLat(cityDto);
+        double lon = cityService.getCityLon(cityDto);
+        WeatherDto weatherDto = weatherService.getWeatherByCoordinates(lat, lon);
+        return ResponseEntity.ok(weatherDto);
     }
 
 }

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.noyex.weather_app.client.city_client.ICityClient;
-import com.noyex.weather_app.client.city_client.contract.WeatherDto;
+import com.noyex.weather_app.client.city_client.contract.CityDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,11 +21,11 @@ public class CityService implements ICityService {
     }
 
     @Override
-    public WeatherDto getCity(String city) {
+    public CityDto getCity(String city) {
         String jsonWeather = weatherClient.fetchCity(city);
         try{
-            List<WeatherDto> weatherDtos = objectMapper.readValue(jsonWeather, new TypeReference<List<WeatherDto>>() {});
-            return weatherDtos.getFirst();
+            List<CityDto> cityDtos = objectMapper.readValue(jsonWeather, new TypeReference<List<CityDto>>() {});
+            return cityDtos.getFirst();
         }
         catch (JsonProcessingException e){
             throw new RuntimeException("Error parsing weather data ", e);
@@ -33,12 +33,12 @@ public class CityService implements ICityService {
     }
 
     @Override
-    public double getCityLat(WeatherDto city) {
+    public double getCityLat(CityDto city) {
         return city.latitude();
     }
 
     @Override
-    public double getCityLon(WeatherDto city) {
+    public double getCityLon(CityDto city) {
         return city.longitude();
     }
 

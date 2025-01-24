@@ -16,7 +16,7 @@ public class WeatherClient implements IWeatherClient{
     }
 
     @Override
-    public String fetchWeather(double lat, double lon) {
+    public String fetchCurrentWeather(double lat, double lon) {
         String url = uriBuilderProvider.builder()
                 .pathSegment("weather")
                 .queryParam("units", "metric")
