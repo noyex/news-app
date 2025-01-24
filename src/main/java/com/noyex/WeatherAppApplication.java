@@ -1,4 +1,4 @@
-package com.noyex.weather_app;
+package com.noyex;
 
 import com.noyex.weather_app.client.city_client.ICityClient;
 import com.noyex.weather_app.client.weather_client.IWeatherClient;
@@ -27,9 +27,6 @@ public class WeatherAppApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		double lat = cityService.getCityLat(cityService.getCity("gdynia"));
-		double lon = cityService.getCityLon(cityService.getCity("gdynia"));
-		System.out.println(weatherClient.fetchCurrentWeather(lat, lon));
 	}
 
 }

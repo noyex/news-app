@@ -23,7 +23,6 @@ public class WeatherClient implements IWeatherClient{
                 .queryParam("lon", lon)
                 .build()
                 .toUriString();
-        System.out.println(url);
         return restTemplate.getForObject(url, String.class);
     }
 }
