@@ -25,7 +25,7 @@ public class CityService implements ICityService {
         String jsonWeather = weatherClient.fetchCity(city);
         try{
             List<CityDto> cityDtos = objectMapper.readValue(jsonWeather, new TypeReference<List<CityDto>>() {});
-            return cityDtos.getFirst();
+            return cityDtos.get(0);
         }
         catch (JsonProcessingException e){
             throw new RuntimeException("Error parsing weather data ", e);
