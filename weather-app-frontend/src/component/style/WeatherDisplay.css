@@ -1,0 +1,11 @@
+.weather-display {
+    background-color: #373F47;
+    color: #C3C9E9;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+h1 {
+    color: #6C91C2;
+}

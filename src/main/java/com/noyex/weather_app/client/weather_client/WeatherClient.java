@@ -1,6 +1,5 @@
 package com.noyex.weather_app.client.weather_client;
 
-import com.noyex.weather_app.client.city_client.ICityClientUriBuilderProvider;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 

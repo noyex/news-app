@@ -1,0 +1,26 @@
+.weather-icon {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    background-size: cover;
+}
+
+.clear {
+    background-image: url('./icons/sunny.png');
+}
+
+.clouds {
+    background-image: url('icons/cloud.png');
+}
+
+.rain {
+    background-image: url('icons/heavy-rain.png');
+}
+
+.snow {
+    background-image: url('icons/snow.png');
+}
+
+.default {
+    background-image: url('icons/cloudy.png');
+}

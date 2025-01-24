@@ -1,13 +1,10 @@
 package com.noyex.weather_app.service.weather_service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.noyex.weather_app.client.weather_client.IWeatherClient;
 import com.noyex.weather_app.client.weather_client.contract.WeatherDto;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class WeatherService implements IWeatherService{

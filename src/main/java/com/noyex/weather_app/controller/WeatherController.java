@@ -1,7 +1,6 @@
 package com.noyex.weather_app.controller;
 
 import com.noyex.weather_app.client.city_client.contract.CityDto;
-import com.noyex.weather_app.client.weather_client.IWeatherClient;
 import com.noyex.weather_app.client.weather_client.contract.WeatherDto;
 import com.noyex.weather_app.service.city_service.ICityService;
 import com.noyex.weather_app.service.weather_service.IWeatherService;

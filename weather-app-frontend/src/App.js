@@ -1,16 +1,13 @@
-import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './page/HomePage';
+import WeatherDisplay from './component/WeatherDisplay';
+import './style/App.css';
 
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/home" element={<HomePage/>}/>
-      </Routes>
-    </Router>
-  );
+    return (
+        <div className="App">
+            <WeatherDisplay city="Radom" />
+        </div>
+    );
 }
 
 export default App;
