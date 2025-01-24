@@ -29,8 +29,10 @@ const WeatherDisplay = ({ city }) => {
 
     return (
         <div className="weather-display">
-            <h1>{weatherData.name}</h1>
-            <WeatherIcon weather={weatherData.weather[0].main} />
+            <div className="city-header">
+                <h1>{weatherData.name}</h1>
+                <WeatherIcon weather={weatherData.weather[0].main} />
+            </div>
             <WeatherDetails weatherData={weatherData} />
         </div>
     );

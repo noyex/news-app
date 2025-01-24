@@ -1,8 +1,172 @@
-.App {
+/* Globalne style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: #f5f5f7;
+}
+
+.app-container {
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #C3C9E9;
+    flex-direction: column;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
     padding: 20px;
+    gap: 20px;
+    background-color: #f5f5f7;
+    margin-top: -20px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+/* Sekcje główne */
+.news-section {
+    flex: 3;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Sekcja pogody */
+.weather-section {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 20px;
+    height: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow-y: auto;
+}
+
+.weather-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Sekcja giełdy */
+.stock-section {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 20px;
+    flex: 1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stock-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Formularz wyszukiwania */
+.search-container {
+    margin-bottom: 20px;
+}
+
+.city-input {
+    width: calc(100% - 100px);
+    padding: 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.city-input:focus {
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.search-button {
+    padding: 12px 20px;
+    font-size: 14px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 8px;
+}
+
+.search-button:hover {
+    background-color: #333;
+    transform: translateY(-1px);
+}
+
+/* Placeholdery */
+.news-placeholder, .stock-placeholder {
+    color: #666;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .news-section, .sidebar {
+        flex: none;
+        width: 100%;
+    }
+
+    .weather-section {
+        height: auto;
+        min-height: 400px;
+    }
 }

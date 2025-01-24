@@ -1,8 +1,12 @@
 .weather-icon {
-    width: 100px;
-    height: 100px;
-    margin: 20px auto;
+    width: 30px; /* Dostosowana wysokość do wielkości tekstu */
+    height: 30px;
     background-size: cover;
+    transition: transform 0.3s ease;
+}
+
+.weather-icon:hover {
+    transform: scale(1.1);
 }
 
 .clear {
