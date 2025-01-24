@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.noyex</groupId>
-	<artifactId>weather-app</artifactId>
+	<artifactId>news-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>weather-app</name>
 	<description>data module</description>
