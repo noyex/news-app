@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import WeatherDisplay from './component/WeatherDisplay';
 import Navbar from './component/Navbar';
+import NewsFeed from './component/NewsFeed';
 import './style/App.css';
 
 function App() {
-    const [city, setCity] = useState('Warszawa'); // domyślne miasto
+    const [city, setCity] = useState('Warszawa');
     const [searchedCity, setSearchedCity] = useState('Warszawa');
 
     const handleSubmit = (e) => {
@@ -17,10 +18,7 @@ function App() {
             <Navbar />
             <div className="main-content">
                 <div className="news-section">
-                    {/* Tutaj będą wiadomości */}
-                    <div className="news-placeholder">
-                        Miejsce na przyszłe wiadomości
-                    </div>
+                    <NewsFeed />
                 </div>
                 <div className="sidebar">
                     <div className="weather-section">

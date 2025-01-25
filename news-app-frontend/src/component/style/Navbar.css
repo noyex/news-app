@@ -1,14 +1,18 @@
 .navbar-wrapper {
+    position: fixed; /* To sprawia, że jest sticky */
+    top: 0;
+    left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 16px;
-    background-color: #f5f5f7;
+    background: transparent; /* Zmieniamy na przezroczyste tło */
+    z-index: 1000;
 }
 
 .navbar.dynamic-island {
     background-color: #000000;
-    width: 400px;
+    width: 400px; /* Stała szerokość dla dynamic island */
     height: 40px;
     border-radius: 20px;
     display: flex;

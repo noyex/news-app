@@ -5,9 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.noyex.news_app.client.INewsClient;
 import com.noyex.translator_app.service.TranslationService;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class NewsService implements INewsService {
     private final TranslationService translationService;
     private final INewsClient newsClient;
@@ -20,23 +20,33 @@ public class NewsService implements INewsService {
     }
 
     @Override
-    public String fetchTranslatedNews(String q, String sortBy, String targetLanguage) {
-        String jsonResponse = newsClient.fetchNews(q, sortBy);
+    public String fetchTranslatedNews(String q, String sortBy, int page) {
+        String targetLanguage = "pl";
+        String jsonResponse = newsClient.fetchNews(q, sortBy, page);
 
         try {
             JsonNode rootNode = objectMapper.readTree(jsonResponse);
+
+            if (!rootNode.has("articles")) {
+                throw new RuntimeException("Invalid JSON: 'articles' field is missing.");
+            }
+
             JsonNode articlesNode = rootNode.path("articles");
 
             for (JsonNode article : articlesNode) {
-                String translatedTitle = translationService.translateText(
-                        article.path("title").asText(), targetLanguage
-                );
-                ((ObjectNode) article).put("title", translatedTitle);
+                if (article.has("title")) {
+                    String translatedTitle = translationService.translateText(
+                            article.path("title").asText(), targetLanguage
+                    );
+                    ((ObjectNode) article).put("title", translatedTitle);
+                }
 
-                String translatedDescription = translationService.translateText(
-                        article.path("description").asText(), targetLanguage
-                );
-                ((ObjectNode) article).put("description", translatedDescription);
+                if (article.has("description")) {
+                    String translatedDescription = translationService.translateText(
+                            article.path("description").asText(), targetLanguage
+                    );
+                    ((ObjectNode) article).put("description", translatedDescription);
+                }
             }
 
             return objectMapper.writeValueAsString(rootNode);

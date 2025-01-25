@@ -43,7 +43,6 @@
 }
 
 
-/* Responsywność */
 @media (max-width: 480px) {
     .weather-details-grid {
         grid-template-columns: repeat(2, 1fr);

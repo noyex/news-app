@@ -1,4 +1,4 @@
-package com.noyex.weather_app.controller.config;
+package com.noyex;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -10,6 +10,12 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/weather/**")
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true);
+
+        registry.addMapping("/api/news/**")
                 .allowedOrigins("http://localhost:3000")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")

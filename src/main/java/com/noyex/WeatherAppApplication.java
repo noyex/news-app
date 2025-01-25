@@ -32,7 +32,6 @@ public class WeatherAppApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println(newsClient.fetchNews("bitcoin", "publishedAt"));
 	}
 
 }

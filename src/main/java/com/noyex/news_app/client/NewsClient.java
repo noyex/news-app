@@ -17,18 +17,17 @@ public class NewsClient implements INewsClient{
     }
 
     @Override
-    public String fetchNews(String q, String sortBy) {
+    public String fetchNews(String q, String sortBy, int page) {
         String url = newsClientUriBuilderProvider.builder()
                 .pathSegment("everything")
                 .queryParam("q", q)
                 .queryParam("sortBy", sortBy)
                 .queryParam("pageSize", 10)
-                .queryParam("page", 3)
+                .queryParam("page", page)
                 .queryParam("from", LocalDate.now().minusDays(7))
                 .queryParam("to", LocalDate.now())
                 .build()
                 .toUriString();
-        System.out.println(url);
         return restTemplate.getForObject(url, String.class);
     }
 }
