@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import getNews from '../service/newsService';
+import CustomSelect from './CustomSelect';
 import './style/NewsFeed.css';
 
 const NewsFeed = () => {
@@ -80,46 +81,36 @@ const NewsFeed = () => {
     return (
         <div className="news-feed">
             <div className="news-controls">
-                <div className="filters">
-                    <div className="filter-group">
-                        <label htmlFor="topic">Kategoria:</label>
-                        <select 
-                            id="topic" 
-                            value={selectedTopic}
-                            onChange={handleTopicChange}
-                            className="filter-select"
-                        >
-                            {topics.map(topic => (
-                                <option key={topic.value} value={topic.value}>
-                                    {topic.label}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className="filter-group">
-                        <label htmlFor="sort">Sortowanie:</label>
-                        <select 
-                            id="sort" 
-                            value={selectedSort}
-                            onChange={handleSortChange}
-                            className="filter-select"
-                        >
-                            {sortOptions.map(option => (
-                                <option key={option.value} value={option.value}>
-                                    {option.label}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <button 
-                        className="refresh-button"
-                        onClick={fetchNews}
-                        disabled={loading}
-                    >
-                        {loading ? 'Odświeżanie...' : 'Odśwież'}
-                    </button>
+            <div className="filters">
+                <div className="filters-row">
+                    <CustomSelect
+                        options={topics} 
+                        value={selectedTopic}
+                        onChange={(value) => {
+                            setSelectedTopic(value);
+                            setCurrentPage(1);
+                        }}
+                        placeholder="Wybierz kategorię"
+                    />
+                    <CustomSelect
+                        options={sortOptions} 
+                        value={selectedSort}
+                        onChange={(value) => {
+                            setSelectedSort(value);
+                            setCurrentPage(1);
+                        }}
+                        placeholder="Sortuj według"
+                    />
                 </div>
+                <button 
+                    className="refresh-button"
+                    onClick={fetchNews}
+                    disabled={loading}
+                >
+                    {loading ? 'Odświeżanie...' : 'Odśwież'}
+                </button>
             </div>
+        </div>
 
             {loading && (
                 <div className="news-loading">
