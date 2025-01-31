@@ -16,3 +16,8 @@ This repository contains a basic web application that fetches news in English, t
 - **Google Translate API**: Translates the fetched news JSON data from English to Polish.
 - **Weather API**: Fetches weather data based on coordinates.
 - **Geocoder API**: Converts city names into geographical coordinates to be used by the Weather API.
+
+## Technologies Used
+
+- **Spring Framework**: Used for the backend of the application.
+- **Artificial Intelligence**: The frontend is created for fun with the use of artificial intelligence.
