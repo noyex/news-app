@@ -1,3 +1,6 @@
+**Main page**
+![main](./images/main.png)
+
 # News and Weather Web App
 
 This repository contains a basic web application that fetches news in English, translates it to Polish using the Google Translate API, and displays it on the web page. Additionally, it fetches weather data based on coordinates and uses a geocoder API to convert city names to coordinates, which are then used to fetch the weather data.
