@@ -23,4 +23,4 @@ This repository contains a basic web application that fetches news in English, t
 ## Technologies Used
 
 - **Spring Framework**: Used for the backend of the application.
-- **Artificial Intelligence**: The frontend is created for fun with the use of artificial intelligence.
+- **React.JS**: Used for frontend.
